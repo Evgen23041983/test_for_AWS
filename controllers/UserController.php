@@ -49,12 +49,12 @@ class UserController
             $email = $_POST['email'];
             $password = $_POST['password'];
             $errors = false;
-            $errors[] = 'Неправильный email';
+            $errors[] = 'Invalid email';
         }
         
         if (!User::checkPassword($password)) 
         {
-            $errors[] = 'Пароль не должен быть короче 6-ти символов';
+            $errors[] = 'Password must not be shorter than 6 characters';
         }
 
         $check = User::checkUserDataHash($email);
@@ -62,11 +62,24 @@ class UserController
         $userId = $check['id'];
         if ($this->verify($password, $hashed_password) ) 
         {
-            User::auth($userId);
-            require_once(ROOT . '/views/site/index.php');
-            return true;
+            if ($email == 'mather@gmail.com') {
+                User::auth($userId);
+                require_once(ROOT . '/views/user/index.php');
+                return true;
+            }
+            elseif ($email == 'father@gmail.com') {
+                User::auth($userId);
+                require_once(ROOT . '/views/user/index2.php');
+                return true;
+            }
+            else {
+                User::auth($userId);
+                require_once(ROOT . '/views/user/index3.php');
+                return true;
+            }
+            
         }
-        else { $errors[] = 'Неправильные данные для входа на сайт';
+        else { $errors[] = 'Incorrect login details';
         }
     require_once(ROOT . '/views/user/login.php');
     return true;

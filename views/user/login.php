@@ -1,5 +1,12 @@
-<html>
-<head></head>
+<!DOCTYPE html >
+
+<html lang="en">
+	<head>
+	<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+	<link rel="stylesheet" type="text/css" href="../css/style.css" />
+	</head>
 <body>
         <div style="color: red; font-size: 14px; padding: 20px; margin: 0 auto; display: block; width:400px;">
             <?php if (isset($errors) && is_array($errors)): ?>
@@ -11,20 +18,20 @@
             <?php endif; ?>
         </div>
         <?php if (User::isGuest()):  ?>      
-            <form action="" method="post" class="form-login" style="display: block; width: 400px; margin: 0 auto;  padding: 20px; text-align: center;">
-            <center><h2>Авторизация</h2></center><br>
+            <form action="" method="post" class="form-login" >
+            <center><h2>Sign In</h2></center><br>
             <input type="text" name="email" placeholder="E-mail" value="<?php echo $email; ?>"/><br><br><br>
-            <input type="password" name="password" placeholder="Пароль" value="<?php echo $_POST['password']; ?>"/><br><br><br>
+            <input type="password" name="password" placeholder="Password" value="<?php echo $_POST['password']; ?>"/><br><br><br>
             <div class="os"></div>
-            <input type="submit" name="submit" class="btn btn-default" style="width: 120px;" value="Вход" />
+            <input type="submit" name="submit" class="btn btn-default"  value="Sign in" />
             <div class="os"></div>
-            <div style="font-size: 14px; color: #777;">
-                Если вы еще по какой то причине не зарегистрированы на нашем сервисе, то не теряйте времени <a href="/register">зарегистрируйтесь</a>.
+            <div>
+                 <a href="/">Back</a>
             </div>
         </form>
         <?php else: ?>
-            <div style="display: block; width: 400px; margin: 0 auto; background: #f2f1f0; padding: 20px; color:#555; text-align: center;">
-                <center><h2 style="color:#555;">Вы уже авторизированы </h2></center>
+            <div>
+                <center><h2>Signed </h2></center>
             </div>
         <?php endif; ?>
 </body>

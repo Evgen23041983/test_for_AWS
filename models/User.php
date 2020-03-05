@@ -88,6 +88,30 @@ class User
         else return true;
     }
        
+
+
+    public static function checkUserMather($login)
+    {
+        $db = Db::getConnection();
+        $sql = 'SELECT * FROM users WHERE login = "mather"';
+        $result = $db->prepare($sql);
+        $result->bindParam(':login', $login, PDO::PARAM_STR);
+        $result->execute();
+        return $user = $result->fetch();
+        
+    }
+
+    public static function checkUserFather($login)
+    {
+        $db = Db::getConnection();
+        $sql = 'SELECT * FROM users WHERE login = "father"';
+        $result = $db->prepare($sql);
+        $result->bindParam(':login', $login, PDO::PARAM_STR);
+        $result->execute();
+        return $user = $result->fetch();
+        
+    }
+
 }
 
 ?>

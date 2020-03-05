@@ -1,14 +1,7 @@
 <?php
-class Page
+class Page extends Model
 {
-    public static function InsertInfo($task)
-    {
-        $db = Db::getConnection();
-        $sql = 'INSERT INTO `tasks`(`task`) VALUES (:task_bind)';
-        $result = $db->prepare($sql);
-        $result->bindParam(':task_bind',$task, PDO::PARAM_STR);;
-        return $result->execute();
-    }
+    
 
     public static function GetInfo()
     {
@@ -19,7 +12,9 @@ class Page
         $i=0;
         while($row=$result->fetch()) {
             $index[$i]['id'] = $row['id'];
+            $index[$i]['member'] = $row['member'];
             $index[$i]['task'] = $row['task'];
+            $index[$i]['done'] = $row['done'];
             $i++;
         }
         return $index;
